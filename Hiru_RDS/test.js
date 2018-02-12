@@ -2,9 +2,8 @@ let AWS = require('aws-sdk');
 const sns = new AWS.SNS();
 const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
-	s3.copyObject({
-		'Bucket': "hiru.sample",
-		'CopySource': "/hiru.demo01/test",
+	s3.getObject({
+		'Bucket': "hiru.demo01",
 		'Key': "test"
 	}).promise()
 		.then(data => {
