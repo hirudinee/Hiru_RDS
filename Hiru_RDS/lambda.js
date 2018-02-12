@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
 	s3.listObjects({
 		'Bucket': 'hiru.sample.demo01',
 		'MaxKeys': 10,
-		'Prefix': ''
+		'Prefix': 'test'
 	}).promise()
 		.then(data => {
 			console.log(data);           // successful response
