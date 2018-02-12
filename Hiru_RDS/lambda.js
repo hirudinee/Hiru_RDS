@@ -3,7 +3,7 @@ const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 
 	s3.deleteObject({
-		'Bucket': "hiru.sample.demo01",
+		'Bucket': "hiru.demo01",
 		'Key': "test"
 	}).promise()
 		.then(data => {
@@ -17,7 +17,7 @@ exports.handler = function (event, context, callback) {
 		});
 
 	s3.listObjects({
-		'Bucket': 'hiru.sample.demo01',
+		'Bucket': 'hiru.demo01',
 		'MaxKeys': 10,
 		'Prefix': 'test'
 	}).promise()

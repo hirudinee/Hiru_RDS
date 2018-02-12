@@ -1,9 +1,10 @@
 let AWS = require('aws-sdk');
+const sns = new AWS.SNS();
 const s3 = new AWS.S3();
 exports.handler = function (event, context, callback) {
 	s3.copyObject({
 		'Bucket': "hiru.sample",
-		'CopySource': "/hiru.sample.demo01/test",
+		'CopySource': "/hiru.demo01/test",
 		'Key': "test"
 	}).promise()
 		.then(data => {
@@ -19,6 +20,15 @@ exports.handler = function (event, context, callback) {
 		})
 		.catch(err => {
 			console.log(err, err.stack); // an error occurred
+		});
+	sns.getTopicAttributes({
+		TopicArn: 'arn:aws:sns:us-east-1:263248768798:hiru'
+	}).promise()
+		.then(data => {
+			console.log(data); // your code goes here
+		})
+		.catch(err => {
+			console.log(err, err.stack); // error handling goes here
 		});
 
 
